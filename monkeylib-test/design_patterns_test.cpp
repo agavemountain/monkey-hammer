@@ -16,14 +16,42 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-#include <stdio.h>
 #include <cppunit/extensions/HelperMacros.h>
-#include <cppunit/extensions/TestFactoryRegistry.h>
-#include <cppunit/ui/text/TestRunner.h>
+#include <iostream>
+#include <monkeylib/core/patterns/command.h>
+#include <monkeylib/core/patterns/observer.h>
 
-int main(int, char ** )
+using namespace std;   // so sue me, I'm lazy tonight.
+using namespace Monkey::Patterns;
+
+class ConcreteCommand : public Command
 {
-    CppUnit::TextUi::TestRunner   runner;
-    runner.addTest( CppUnit::TestFactoryRegistry::getRegistry().makeTest() );
-    return((runner.run( "", false )) ? 0 : 1);
-}
+public:
+	int value;
+
+	ConcreteCommand() : value( 0 ) {}
+	void execute() { value++; }
+};
+
+
+class design_patterns_test : public CppUnit::TestFixture {
+    CPPUNIT_TEST_SUITE( design_patterns_test );
+    CPPUNIT_TEST( test_command );
+    CPPUNIT_TEST_SUITE_END();
+public:
+
+    void test_command()
+    {
+    	ConcreteCommand c;
+    	CPPUNIT_ASSERT_EQUAL(c.value, 0);
+    	c.execute();
+    	CPPUNIT_ASSERT_EQUAL(c.value, 1);
+
+    }
+
+
+};
+
+CPPUNIT_TEST_SUITE_REGISTRATION( design_patterns_test );
+
+

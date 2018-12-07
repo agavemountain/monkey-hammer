@@ -22,6 +22,7 @@ else()
 endif()
 
 file(GLOB MONKEY_HEADERS "include/monkeylib/core/*.h")
+file(GLOB MONKEY_PATTERN_HEADERS "include/monkeylib/core/patterns/*.h")
 file(GLOB MONKEY_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp")
 
 file(GLOB MONKEY_COMMON_SRC
@@ -30,6 +31,7 @@ file(GLOB MONKEY_COMMON_SRC
 
 file(GLOB MONKEY_COMMON_HEADERS
 	${MONKEY_HEADERS}
+	${MONKEY_PATTERN_HEADERS}
 )
 
 message("PROJECT_NAME = ${PROJECT_NAME}")
