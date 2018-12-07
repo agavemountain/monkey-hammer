@@ -1,5 +1,38 @@
-# Prerequisites
+# IDE Artifacts
+.metadata
+.build
+.idea
 *.d
+Debug
+Release
+*~
+*#
+*.iml
+tags
+
+#vim swap file
+*.swp
+
+#compiled python files
+*.pyc
+
+#Vagrant stuff
+Vagrantfile
+.vagrant
+
+#Mac stuff
+.DS_Store
+
+#doxygen
+doxygen/html/
+doxygen/latex/
+
+
+#cmake artifacts
+dependencies
+_build
+build
+_build_*
 
 # Compiled Object files
 *.slo
@@ -18,7 +51,6 @@
 
 # Fortran module files
 *.mod
-*.smod
 
 # Compiled Static libraries
 *.lai
@@ -30,3 +62,7 @@
 *.exe
 *.out
 *.app
+
+third-party/
+
+.project
