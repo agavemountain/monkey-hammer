@@ -50,7 +50,11 @@ include(external_dependencies)
 
 include(compiler_settings)
 
+include( CTest )
+include(CPack)
+
 add_subdirectory(monkeylib)
+add_subdirectory(monkeylib-test)
 
 # setup user specified installation directory if any, regardless previous platform default settings
 if (CMAKE_INSTALL_BINDIR)
