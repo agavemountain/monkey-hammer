@@ -1,5 +1,5 @@
 /**
- *  @file: monkey-hammer.h
+ *  @file: cppunit_main.cpp
  *
  *  Copyright (C) 2018  Joe Turner <joe@agavemountain.com>
  *

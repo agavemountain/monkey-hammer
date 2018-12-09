@@ -1,5 +1,5 @@
 /**
- *  @file: monkey-hammer.h
+ *  @file: design_patterns_test.cpp
  *
  *  Copyright (C) 2018  Joe Turner <joe@agavemountain.com>
  *
@@ -19,7 +19,6 @@
 #include <cppunit/extensions/HelperMacros.h>
 #include <iostream>
 #include <monkeylib/core/patterns/command.h>
-//#include <monkeylib/core/patterns/observer.h>
 
 using namespace std;   // so sue me, I'm lazy tonight.
 using namespace Monkey::Patterns;
