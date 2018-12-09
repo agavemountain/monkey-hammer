@@ -19,7 +19,7 @@
 #include <cppunit/extensions/HelperMacros.h>
 #include <iostream>
 #include <monkeylib/core/patterns/command.h>
-#include <monkeylib/core/patterns/observer.h>
+//#include <monkeylib/core/patterns/observer.h>
 
 using namespace std;   // so sue me, I'm lazy tonight.
 using namespace Monkey::Patterns;
