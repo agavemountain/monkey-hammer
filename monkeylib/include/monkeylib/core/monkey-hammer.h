@@ -100,4 +100,13 @@ namespace Configuration
 {
 }
 
+//! \brief Text formatters
+//!
+//! This namespace contains code dealing with transforming text.
+namespace Formatters
+{
 }
+
+}
+
+
