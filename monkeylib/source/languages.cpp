@@ -17,17 +17,17 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 #include <monkeylib/core/languages.h>
-
+#include <stdio.h>
 
 struct language_definition
 {
     const char *language_name;
-    const char *file_extensions[];
+    const char **file_extensions;
     const char *script;
     const char *file;
 };
 
-const char known_binary_archives[] =
+const char *known_binary_archives[] =
 {
     ".tar",
     ".tar.Z",
@@ -39,4 +39,5 @@ const char known_binary_archives[] =
     ".war",     // Contained within .ear
     ".xz",
     NULL
-}
+};
+
