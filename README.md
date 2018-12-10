@@ -6,14 +6,14 @@ of those tools, completely rewritten.
 
 This project is always under construction, and this isn't production quality code, so don't expect great design patterns or idioms -- this is just a collection of hackish scripts, utilities, and idoms to get work done faster.
 
-###Requirements
+### Requirements
 
     * Doxygen 1.8.0+ (for markdown support) and GraphViz.
     * GNU GCC toolchain
     * Git (obviously)
     * CPPUNIT (for unit tests)
      
-###Building and Installing
+### Building and Installing
 
 To build the software:
 
@@ -40,7 +40,7 @@ To uninstall:
    $ make uninstall
 ```
 
-###Running Unit Tests
+### Running Unit Tests
 
 This project contains some unit tests.  To execute, use the cmake
 test harness.
