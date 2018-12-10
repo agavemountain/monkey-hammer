@@ -81,3 +81,23 @@ $ sudo make uninstall
 //!
 //! Per good standards, all of the Monkey Hammer code is contained within a
 //! namespace.
+namespace Monkey
+{
+
+//! \brief Re-usable design patterns and idioms
+//!
+//! This namespace contains reusable idioms and design patterns.
+namespace Patterns
+{
+}
+
+//! \brief Configuration files
+//!
+//! This namespace contains code dealing with loading, parsing, 
+//! generating, and saving configuration files for various change control
+//! systems, and code generation tools.
+namespace Configuration
+{
+}
+
+}
