@@ -19,5 +19,70 @@
 #include <cppunit/extensions/HelperMacros.h>
 #include <monkeylib/core/configuration/monkey_hammer_config.h>
 #include <monkeylib/core/configuration/simpleini/SimpleIni.h>
+#include <monkeylib/core/monkey_errors.h>
+
+namespace Monkey
+{
+namespace Configuration
+{
 
 
+MonkeyHammerConfigurationFile::MonkeyHammerConfigurationFile()
+{
+
+}
+
+std::string MonkeyHammerConfigurationFile::get_username() const
+{
+	return _username;
+}
+
+std::string MonkeyHammerConfigurationFile::get_company() const
+{
+	return _company;
+}
+
+std::string MonkeyHammerConfigurationFile::get_email_address() const
+{
+	return _email_address;
+}
+
+void MonkeyHammerConfigurationFile::set_username(std::string & username)
+{
+	_username = username;
+}
+
+void MonkeyHammerConfigurationFile::set_company(std::string & company)
+{
+	_company = company;
+}
+
+void MonkeyHammerConfigurationFile::set_email_address(std::string & email_address)
+{
+	_email_address=email_address;
+}
+
+int MonkeyHammerConfigurationFile::load()
+{
+    CSimpleIni ini;
+    SI_Error rc = ini.LoadFile(_location.c_str());
+	if (rc < 0)
+    {
+	    return M_CONFIG_LOAD_ERROR;
+    }
+
+	_username = ini.GetValue("global", "username", "");
+	_company = ini.GetValue("global", "company", "");
+	_email_address = ini.GetValue("global", "email", "");
+
+	return M_OK;
+}
+
+int MonkeyHammerConfigurationFile::save()
+{
+	return M_OK;
+}
+
+
+}
+}

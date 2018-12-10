@@ -37,14 +37,23 @@ class ConfigurationFile
 public:
 
     //! \brief Load and parse the configuration file
-    virtual int load();
+    virtual int load() = 0;
 
     //! \brief Save the configuration file.
-    virtual int save();
+    virtual int save() = 0;
     
+    //! \brief Get the configuration file's location
+    //!
+    //! \returns
+    //!		path and filename of the configuration file.
+    virtual std::string get_file_location() const;
+
+    virtual void set_file_location(const char *location);
+    virtual void set_file_location(const std::string &location);
+
 protected:
 
-    //! absolute or relavite path and filename of where the configuration
+    //! absolute or relative path and filename of where the configuration
     //! file is stored.
     std::string _location;
 };

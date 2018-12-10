@@ -34,21 +34,23 @@ namespace Configuration
     class MonkeyHammerConfigurationFile : public ConfigurationFile
     {
     public:
-        MonkeyHammerConfigurationFile(std::string& location);
+        MonkeyHammerConfigurationFile();
 
+        //! \brief Load and parse the configuration file
+        virtual int load();
+
+        //! \brief Save the configuration file.
+        virtual int save();
         
-        std::string get_location() const;
         std::string get_username() const;
         std::string get_company() const;
         std::string get_email_address() const;
 
-        void set_location(std::string & location);
         void set_username(std::string & username);
-        void get_company(std::string & company);
-        void get_email_address(std::string & email_address);
+        void set_company(std::string & company);
+        void set_email_address(std::string & email_address);
 
     private:
-        std::string _location;
         std::string _username;
         std::string _email_address;
         std::string _company;

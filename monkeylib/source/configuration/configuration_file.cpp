@@ -1,5 +1,5 @@
 /**
- *  @file: Version.h
+ *  @file: configuration_file.h
  *
  *  Copyright (C) 2018  Joe Turner <joe@agavemountain.com>
  *
@@ -16,32 +16,27 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-#pragma once
-#include <monkeylib/core/core_exports.h>
+#include <monkeylib/core/configuration/configuration_file.h>
 
 namespace Monkey
 {
-//! \brief Software versions
-namespace Version
+namespace Configuration
 {
-	//! \brief Get library version string
-	//! \returns
-	//!		library version as a string
-	MKY_CORE_API const char* GetVersionString();
 
-	//! \brief Get SDK version major number
-	MKY_CORE_API unsigned GetVersionMajor();
+std::string ConfigurationFile::get_file_location() const
+{
+	return _location;
+}
 
-	//! \brief Get SDK version minor number
-	MKY_CORE_API unsigned GetVersionMinor();
+void ConfigurationFile::set_file_location(const char *location)
+{
+    _location = location;
+}
 
-	//! \brief Get SDK patch level
-	MKY_CORE_API unsigned GetVersionPatch();
+void ConfigurationFile::set_file_location(const std::string &location)
+{
+	_location = location;
+}
 
-	//! \brief Get compiler version string
-	//! \returns
-	//! 	returns compiler version string
-	MKY_CORE_API const char* GetCompilerVersionString();
-
-} //namespace Version
-} //namespace Monkey
+}
+}

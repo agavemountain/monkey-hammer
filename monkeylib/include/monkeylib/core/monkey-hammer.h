@@ -20,6 +20,15 @@
 
 /*! \mainpage
 
+    <table>
+        <tr><th>Project     <td>Monkey Hammer code tools
+        <tr><th>File        <td>SimpleIni.h
+        <tr><th>Author      <td>Joe Turner
+        <tr><th>Source      <td>https://github.com/agavemountain/monkey-hammer
+        <tr><th>Version     <td>0.0.0
+    </table>
+
+
  \section intro Introduction
 
  Welcome to the Monkey Hammer suite of code tools.
@@ -91,7 +100,7 @@ namespace Patterns
 {
 }
 
-//! \brief Configuration files
+//! \brief Config files
 //!
 //! This namespace contains code dealing with loading, parsing, 
 //! generating, and saving configuration files for various change control
