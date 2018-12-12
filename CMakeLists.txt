@@ -55,6 +55,7 @@ include(CPack)
 
 add_subdirectory(monkeylib)
 add_subdirectory(monkeylib-test)
+add_subdirectory(monkey-comment)
 
 # setup user specified installation directory if any, regardless previous platform default settings
 if (CMAKE_INSTALL_BINDIR)
