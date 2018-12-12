@@ -6,4 +6,4 @@ include_directories(${CMAKE_SOURCE_DIR}/monkeylib/include)
 
 # Now simply link against gtest or gtest_main as needed. Eg
 add_executable(monkey-comment ${MONKEY_COMMENT_SRC} )
-target_link_libraries(monkey-comment monkeylib )
+target_link_libraries(monkey-comment monkeylib  ${Boost_LIBRARIES} )
