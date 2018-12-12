@@ -24,18 +24,22 @@ endif()
 file(GLOB MONKEY_HEADERS "include/monkeylib/core/*.h")
 file(GLOB MONKEY_PATTERN_HEADERS "include/monkeylib/core/patterns/*.h")
 file(GLOB MONKEY_CONFIG_HEADERS "include/monkeylib/core/configuration/*.h")
+file(GLOB MONKEY_FORMATTERS_HEADERS "include/monkeylib/core/formatters/*.h")
 file(GLOB MONKEY_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp")
 file(GLOB MONKEY_CONFIG_SRC "${CMAKE_CURRENT_SOURCE_DIR}/source/configuration/*.cpp")
+file(GLOB MONKEY_FORMATTERS_SRC "${CMAKE_CURRENT_SOURCE_DIR}/source/formatters/*.cpp")
 
 file(GLOB MONKEY_COMMON_SRC
 	${MONKEY_SOURCE}
     ${MONKEY_CONFIG_SRC}
+    ${MONKEY_FORMATTERS_SRC}
 )
 
 file(GLOB MONKEY_COMMON_HEADERS
 	${MONKEY_HEADERS}
 	${MONKEY_PATTERN_HEADERS}
     ${MONKEY_CONFIG_HEADERS}
+    ${MONKEY_FORMATTERS_HEADERS}
 )
 
 message("PROJECT_NAME = ${PROJECT_NAME}")
