@@ -50,9 +50,9 @@ macro(set_gcc_flags)
         list(APPEND MONKEY_COMPILER_FLAGS "-fPIC")
     endif()
 
-    if(NOT ENABLE_RTTI)
-        list(APPEND MONKEY_COMPILER_FLAGS "-fno-rtti")
-    endif()
+#    if(NOT ENABLE_RTTI)
+#        list(APPEND MONKEY_COMPILER_FLAGS "-fno-rtti")
+#    endif()
 
     if(MINIMIZE_SIZE AND COMPILER_GCC)
         list(APPEND MONKEY_COMPILER_FLAGS "-s")

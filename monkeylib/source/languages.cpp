@@ -1,5 +1,5 @@
 /**
- *  @file: Version.h
+ *  @file: languages.cpp
  *
  *  Copyright (C) 2018  Joe Turner <joe@agavemountain.com>
  *
@@ -16,32 +16,28 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-#pragma once
-#include <monkeylib/core/core_exports.h>
+#include <monkeylib/core/languages.h>
+#include <stdio.h>
 
-namespace Monkey
+struct language_definition
 {
-//! \brief Software versions
-namespace Version
+    const char *language_name;
+    const char **file_extensions;
+    const char *script;
+    const char *file;
+};
+
+const char *known_binary_archives[] =
 {
-	//! \brief Get library version string
-	//! \returns
-	//!		library version as a string
-	MKY_CORE_API const char* GetVersionString();
+    ".tar",
+    ".tar.Z",
+    ".tar.gz",
+    ".tar.bz2",
+    ".zip",
+    ".Zip",
+    ".ear",     // Java
+    ".war",     // Contained within .ear
+    ".xz",
+    NULL
+};
 
-	//! \brief Get SDK version major number
-	MKY_CORE_API unsigned GetVersionMajor();
-
-	//! \brief Get SDK version minor number
-	MKY_CORE_API unsigned GetVersionMinor();
-
-	//! \brief Get SDK patch level
-	MKY_CORE_API unsigned GetVersionPatch();
-
-	//! \brief Get compiler version string
-	//! \returns
-	//! 	returns compiler version string
-	MKY_CORE_API const char* GetCompilerVersionString();
-
-} //namespace Version
-} //namespace Monkey

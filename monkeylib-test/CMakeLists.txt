@@ -1,11 +1,12 @@
-add_project(monkeylib-test 
-    "Tests for the Monkey Library"
-    monkeylib )
+add_project(monkeylib-test "Tests for the Monkey Library" monkeylib )
 
-file(GLOB MONKEY_CORE_TESTS_SRC
-  "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp"
-  )
-  
+file(GLOB MONKEY_CONFIG_TESTS_SRC "${CMAKE_CURRENT_SOURCE_DIR}/configuration/*.cpp")
+file(GLOB MONKEY_CORE_TESTS_SRC "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
+
+file(GLOB MONKEY_TESTS_SRC
+    ${MONKEY_CONFIG_TESTS_SRC}
+    ${MONKEY_CORE_TESTS_SRC}
+)
 if (AUTORUN_UNIT_TESTS)
     enable_testing()
 endif()
@@ -16,6 +17,6 @@ enable_testing()
 include_directories(${CMAKE_SOURCE_DIR}/monkeylib/include)
 
 # Now simply link against gtest or gtest_main as needed. Eg
-add_executable(monkeylib-test ${MONKEY_CORE_TESTS_SRC} )
+add_executable(monkeylib-test ${MONKEY_TESTS_SRC} )
 target_link_libraries(monkeylib-test monkeylib cppunit)
 add_test(NAME core_test COMMAND monkeylib-test)

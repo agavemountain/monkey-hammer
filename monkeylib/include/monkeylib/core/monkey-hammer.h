@@ -20,6 +20,15 @@
 
 /*! \mainpage
 
+    <table>
+        <tr><th>Project     <td>Monkey Hammer code tools
+        <tr><th>File        <td>SimpleIni.h
+        <tr><th>Author      <td>Joe Turner
+        <tr><th>Source      <td>https://github.com/agavemountain/monkey-hammer
+        <tr><th>Version     <td>0.0.0
+    </table>
+
+
  \section intro Introduction
 
  Welcome to the Monkey Hammer suite of code tools.
@@ -81,3 +90,32 @@ $ sudo make uninstall
 //!
 //! Per good standards, all of the Monkey Hammer code is contained within a
 //! namespace.
+namespace Monkey
+{
+
+//! \brief Re-usable design patterns and idioms
+//!
+//! This namespace contains reusable idioms and design patterns.
+namespace Patterns
+{
+}
+
+//! \brief Config files
+//!
+//! This namespace contains code dealing with loading, parsing, 
+//! generating, and saving configuration files for various change control
+//! systems, and code generation tools.
+namespace Configuration
+{
+}
+
+//! \brief Text formatters
+//!
+//! This namespace contains code dealing with transforming text.
+namespace Formatters
+{
+}
+
+}
+
+
