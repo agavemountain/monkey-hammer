@@ -118,4 +118,77 @@ namespace Formatters
 
 }
 
+/**
+ \page commenting Commenting Utility
 
+ As a technical mercenary (consultant), I've had the pleasure of working in
+ a variety of industries and with a myriad of clients.  While I generally follow
+ the style of the code I'm editing, I do run into developers with unusually
+ strong opinions about code comment formatting, especially where copyright
+ headers and class documentation are concerned.
+
+ I gave up and wrote this handy-dandy utility for generating properly formatted
+ copyright headers and code comments.  This is the remnants of those scripts,
+ rewritten and refactored in C++.
+
+ This application does not strip or alter code.  It will simply prepend and
+ format the stream of text that is passed through it, via standard I/O
+
+ \section Examples
+
+ For the following examples, we assume we are using the following imaginary example file (named myfile),
+ with the following content:
+ \code
+ This is a test
+ This is a comment
+ \endcode
+
+ \subsection Redirection
+ ---------
+ Without specifying an input file and output file:
+ - If no input file is specified, standard input is used
+ - If no output file is specified, standard output is used
+
+ Therefore, you can take a file and pipe it to the monkeyhammer utility
+ which will take the input and format it which can be dumped into a
+ file (named myoutputfile in the following example):
+ \code
+ $ cat myfile | mhcomment > myoutputfile
+ \endcode
+
+ Additionally, you can append it to an existing file:
+ \code
+ $ cat myfile | mhcomment  >> myoutputfile
+ \endcode
+
+ \subsection singleline Single Line Comments
+
+ You can choose to prefix each line with a string.  For bash files, or Perl
+ headers you'd want to use the # symbol.  For C++, // would rule the day.
+
+ \code
+ $ mhcomment --input myfile  --comment-pre "# "
+ # This is a test
+ # This is only a test
+ \endcode
+
+ \subsection multiline Multi-Line Comments
+ ------
+ More importantly, you can specify how multi-line comments are formatted.
+ \code
+ $ mhcomment --input myfile --comment-prefix "//!" --comment-pre " #" --comment-postfix "//!"
+//!
+ # This is a test
+ # This is only a test
+//!
+ \endcode
+
+Language specifier.  To list the
+ \code
+ $ mhcomment --input myfile --language javascript
+/*
+ * This is a test
+ * This is only a test
+ */
+\endcode
+*/
