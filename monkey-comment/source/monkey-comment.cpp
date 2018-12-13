@@ -27,8 +27,11 @@
 #include <boost/progress.hpp>
 #include <boost/algorithm/string.hpp>
 
+#include <monkeylib/core/formatters/comment_formatter.h>
+
 using namespace std;
 namespace po = boost::program_options;
+using namespace Monkey::Formatters;
 
 const char *CPREFIX="comment-prefix";
 const char *CPOSTFIX="comment-postfix";
@@ -41,6 +44,8 @@ const char *SHOW_LANG="show-languages";
 
 //! Program Entry Point
 int main(int ac, char **av) {
+
+    CommentFormatter gComment;
     // Declare the supported options.
     po::options_description generic("Generic options");
     generic.add_options()
@@ -54,8 +59,8 @@ int main(int ac, char **av) {
     (CPREFIX, po::value< string >(), "Comment characters to prefix comment stanza.")
     (CPRE, po::value< string >(), "comment characters to prefix each line.")
     (CPOSTFIX, po::value< string >(), "Comment characters to postfix comment stanza.")
-    (LANGUAGE, po::value< string >(), "sets language options")
-    (SHOW_LANG, "display supported computer languages")
+//    (LANGUAGE, po::value< string >(), "sets language options")
+//    (SHOW_LANG, "display supported computer languages")
     ;
 
     po::options_description cmdline_options;
@@ -96,61 +101,61 @@ int main(int ac, char **av) {
 //            }
 //        }
 //
-//        // override switches.  These switches will override
-//        // the --language switch:
-//
-//        if (vm.count(CPREFIX)) {
-//            string tmp = vm[CPREFIX].as< string >();
-//            gComment.setMultiLinePrefix(tmp);
-//        }
-//
-//        if (vm.count(CPRE)) {
-//            string tmp = vm[CPRE].as< string >();
-//            gComment.setLinePrefix(tmp);
-//        }
-//
-//        if (vm.count(CPOSTFIX)) {
-//            string tmp = vm[CPOSTFIX].as< string >();
-//            gComment.setMultiLinePostfix(tmp);
-//        }
-//
-//        if (vm.count(INPUT)) {
-//            string tmp = vm[INPUT].as< string >();
-//            ifstream infile;
-//            infile.open(tmp.c_str(), ofstream::in);
-//
-//            if (!infile.good())
-//            {
-//                cerr << "Could not open input file " << tmp << endl;
-//            }
-//
-//            gComment.format(infile);
-//        }
-//        else
-//        {
-//            // no template specified, we simply use standard in.
-//            gComment.format(cin);
-//        }
-//
-//        if (vm.count(OUTPUT)) {
-//            string tmp = vm[OUTPUT].as< string >();
-//            ofstream file;
-//            file.open(tmp.c_str(), ofstream::out);
-//
-//            if (!file.good())
-//            {
-//                cerr << "Could not open output file " << tmp << endl;
-//            }
-//
-//            file << gComment.getResults();
-//            file.close();
-//        }
-//        else
-//        {
-//            // if no files specified, we dump to std::cout, and
-//            // we only do it once.
-//            //std::cout << gComment.getResults();
-//        }
+       // override switches.  These switches will override
+       // the --language switch:
+
+       if (vm.count(CPREFIX)) {
+           string tmp = vm[CPREFIX].as< string >();
+           gComment.setMultiLinePrefix(tmp);
+       }
+
+       if (vm.count(CPRE)) {
+           string tmp = vm[CPRE].as< string >();
+           gComment.setLinePrefix(tmp);
+       }
+
+       if (vm.count(CPOSTFIX)) {
+           string tmp = vm[CPOSTFIX].as< string >();
+           gComment.setMultiLinePostfix(tmp);
+       }
+
+       if (vm.count(INPUT)) {
+           string tmp = vm[INPUT].as< string >();
+           ifstream infile;
+           infile.open(tmp.c_str(), ofstream::in);
+
+           if (!infile.good())
+           {
+               cerr << "Could not open input file " << tmp << endl;
+           }
+
+           gComment.format(infile);
+       }
+       else
+       {
+           // no template specified, we simply use standard in.
+           gComment.format(cin);
+       }
+
+       if (vm.count(OUTPUT)) {
+           string tmp = vm[OUTPUT].as< string >();
+           ofstream file;
+           file.open(tmp.c_str(), ofstream::out);
+
+           if (!file.good())
+           {
+               cerr << "Could not open output file " << tmp << endl;
+           }
+
+           file << gComment.getResults();
+           file.close();
+       }
+       else
+       {
+           // if no files specified, we dump to std::cout, and
+           // we only do it once.
+           std::cout << gComment.getResults();
+       }
     }
     catch(...) {
         cout << "Invalid arguments.  See --help for proper options.\n\n";

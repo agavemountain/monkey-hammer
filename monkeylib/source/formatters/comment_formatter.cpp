@@ -37,19 +37,19 @@ CommentFormatter::~CommentFormatter()
 {
 }
 
-void CommentFormatter::setMultiLinePrefix(std::string prefix)
+void CommentFormatter::setMultiLinePrefix(const std::string &prefix)
 {
-    mPrefix = prefix;
+    comment_specifiers.prefix = prefix;
 }
 
-void CommentFormatter::setMultiLinePostfix(std::string postfix)
+void CommentFormatter::setMultiLinePostfix(const std::string &postfix)
 {
-    mPostfix = postfix;
+    comment_specifiers.postfix = postfix;
 }
 
-void CommentFormatter::setLinePrefix(std::string prefix)
+void CommentFormatter::setLinePrefix(const std::string &prefix)
 {
-    mLinePrefix = prefix;
+    comment_specifiers.line_prefix = prefix;
 }
 
 std::string CommentFormatter::getResults()
@@ -60,27 +60,27 @@ std::string CommentFormatter::getResults()
 void CommentFormatter::applyMultiLinePrefix()
 {
     // multi-line postfix (on it's own line)
-    if (mPrefix.length())
+    if (comment_specifiers.prefix.length())
     {
-        mOutput += mPrefix + "\n";
+        mOutput += comment_specifiers.prefix + "\n";
     }
 }
 
 void CommentFormatter::applyMultiLinePostfix()
 {
     // multi-line postfix (on it's own line)
-    if (mPostfix.length())
+    if (comment_specifiers.postfix.length())
     {
-        mOutput += mPostfix + "\n";
+        mOutput += comment_specifiers.postfix + "\n";
     }
 }
 
 void CommentFormatter::processLine(std::string &str)
 {
     // @TODO word wrap.
-    if (mLinePrefix.length())
+    if (comment_specifiers.line_prefix.length())
     {
-        mOutput += mLinePrefix ;
+        mOutput += comment_specifiers.line_prefix ;
     }
 
     mOutput += str + "\n";

@@ -17,8 +17,21 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 #pragma once
+#include <string>
 
 namespace Monkey
 {
+
+//! \brief Source code annotation delimeters
+//!
+//! A comment is an programmer-readable explaination or annotation in the 
+//! source of a computer program.  The syntax of comments varies
+//! considerably in various programming languages.
+struct _source_annotation
+{
+    std::string prefix;	                //!< multi-line prefix
+    std::string postfix;                //!< multi-line postfix
+    std::string line_prefix;            //!< prefix for each comment line
+};
 
 }

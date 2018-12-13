@@ -19,6 +19,7 @@
 #pragma once
 #include <string>
 #include <monkeylib/core/patterns/command.h>
+#include <monkeylib/core/languages.h>
 
 namespace Monkey
 {
@@ -42,14 +43,14 @@ public:
 
     //! set the multi-line postfix (prepended to the beginning the multiple line
     //! block of text.
-    void setMultiLinePrefix(std::string prefix);
+    void setMultiLinePrefix(const std::string &prefix);
 
     //! set the multi-line postfix (appended to after the multiple line
     //! block of text.
-    void setMultiLinePostfix(std::string postfix);
+    void setMultiLinePostfix(const std::string &postfix);
 
     //! set the line prefix, which is prepended to each line.
-    void setLinePrefix(std::string prefix);
+    void setLinePrefix(const std::string &prefix);
 
     //! format one or more lines of text into a comment.
     std::string format(std::string text);
@@ -73,14 +74,12 @@ private:
     void setPythonLanguage();
     void setBashLanguage();
 
-
     void applyMultiLinePrefix();
     void applyMultiLinePostfix();
     void processLine(std::string &str);
 
-    std::string mPrefix;				//!< multi-line prefix
-    std::string mPostfix;				//!< multi-line postfix
-    std::string mLinePrefix;			//!< prefix for each comment line
+    struct _source_annotation comment_specifiers;
+
     std::string mOutput; 				//!< temporary output buffer.
 };
 }
