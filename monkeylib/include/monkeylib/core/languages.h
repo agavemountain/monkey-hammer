@@ -22,9 +22,9 @@
 namespace Monkey
 {
 
-//! \brief Source code annotation delimeters
+//! \brief Source code annotation delimiters
 //!
-//! A comment is an programmer-readable explaination or annotation in the 
+//! A comment is an programmer-readable explanation or annotation in the
 //! source of a computer program.  The syntax of comments varies
 //! considerably in various programming languages.
 struct _source_annotation
