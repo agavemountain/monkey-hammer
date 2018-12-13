@@ -42,6 +42,7 @@ namespace Configuration
         //! \brief Save the configuration file.
         virtual int save();
         
+        // [global]
         std::string get_username() const;
         std::string get_company() const;
         std::string get_email_address() const;
