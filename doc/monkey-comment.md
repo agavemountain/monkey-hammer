@@ -1,3 +1,5 @@
+# monkey-comment
+
 As a technical mercenary (consultant), I've had the pleasure of working in a variety of industries and with a myriad of clients.  While I generally follow the style of the code I'm editing, I do run into developers with unusually strong opinions about code comment formatting, especially where copyright
 headers and class documentation are concerned.
 

@@ -8,7 +8,9 @@ This project is always under construction, and this isn't production quality cod
 
 ### Utilities
 
-- [Code commenting formatter utility](https://github.com/agavemountain/monkey-hammer/blob/master/doc/monkey-comment.md)
+- [Code commenting formatter utility](https://github.com/agavemountain/monkey-hammer/blob/master/doc/monkey-comment.md).  This is a simple
+  utility for formatting text as a comment.  It can take standard input or a file and generate comments for whatever computer language
+  desired.
 
 ### Requirements
 
