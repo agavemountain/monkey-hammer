@@ -5,7 +5,7 @@ headers and class documentation are concerned.
 
 I gave up and wrote this handy-dandy utility for generating properly formatted copyright headers and code comments.  
 
-This application does not strip or alter code.  It will simply prepend and format the stream of text that is passed through it, via standard I/O
+This application does not strip or alter code.  It will simply prepend and format the stream of text that is passed through it, via standard I/O.
 
 ### Redirection
 Without specifying an input file and output file:
@@ -19,6 +19,7 @@ Therefore, you can take a file and pipe it to the utility  which will take the i
  ```
 
  Additionally, you can append it to an existing file:
+ 
 ```bash
  $ cat myfile | monkey-comment  >> myoutputfile
 ```
@@ -35,6 +36,7 @@ Therefore, you can take a file and pipe it to the utility  which will take the i
 ### Multi-Line Comments
 
  More importantly, you can specify how multi-line comments are formatted.
+ 
 ```bash
  $ monkey-comment  --input myfile --comment-prefix "//!" --comment-pre " #" --comment-postfix "//!"
 //!

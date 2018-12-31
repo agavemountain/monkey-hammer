@@ -200,40 +200,6 @@ void CommentFormatter::setBashLanguage()
     setMultiLinePostfix("#");
 }
 
-//void CommentFormatter::setLanguage(int language)
-//{
-//    switch (language)
-//    {
-//    case BASH:
-//        setBashLanguage();
-//        break;
-//
-//    case CPP:
-//    case JAVASCRIPT:
-//    case PERL:
-//        setCLanguage();
-//        break;
-//
-//    case RUBY:
-//        setRubyLanguage();
-//        break;
-//    case XML:
-//        setXMLLanguage();
-//        break;
-//
-//    case PYTHON:
-//        setPythonLanguage();
-//        break;
-//
-//    case HTML:
-//        setXMLLanguage();
-//        break;
-//
-//    default:
-//        break;
-//    }
-//}
-
 void CommentFormatter::execute(std::istream &in)
 {
     format(in);
