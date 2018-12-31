@@ -1,11 +1,11 @@
 /**
- *  @file: monkey-comment.cpp
+ *  @file: monkey-text2array.cpp
  *
  * This utility makes it easy to generate a take a text file
  * and turn it into a character array so it can be embedded
  * into an compiled executable.
  *
- *  Copyright (C) 2018  Joe Turner <joe@agavemountain.com>
+ *  Copyright (C) 2019  Joe Turner <joe@agavemountain.com>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -26,42 +26,35 @@
 #include <boost/program_options.hpp>
 #include <boost/algorithm/string.hpp>
 
-#include <monkeylib/core/formatters/comment_formatter.h>
+#include <monkeylib/core/formatters/string_array_formatter.h>
 
 using namespace std;
 namespace po = boost::program_options;
 using namespace Monkey::Formatters;
 
-const char *CPREFIX="comment-prefix";
-const char *CPOSTFIX="comment-postfix";
-const char *CPRE="comment-pre";
 const char *INPUT="input";
 const char *OUTPUT="output";
 const char *HELP="help";
-const char *LANGUAGE="language";
-const char *SHOW_LANG="show-languages";
+const char *VARNAME="variable-name";
 
+std::string gVarName;
+
+//
 //! Program Entry Point
 int main(int ac, char **av) {
-
-    CommentFormatter gComment;
-    // Declare the supported options.
     po::options_description generic("Generic options");
     generic.add_options()
     (HELP, "produce help message")
-    (INPUT, po::value< string >(), "specifies input file name to comment-ize.")
+    (INPUT, po::value< string >(), "specifies input file name to read.")
     (OUTPUT, po::value< string >(), "specifies output file name.")
+    (VARNAME, po::value< string >(), "specifies the variable name.")
     ;
 
-    po::options_description langcfg("Language options");
-    langcfg.add_options()
-    (CPREFIX, po::value< string >(), "Comment characters to prefix comment stanza.")
-    (CPRE, po::value< string >(), "comment characters to prefix each line.")
-    (CPOSTFIX, po::value< string >(), "Comment characters to postfix comment stanza.")
-    ;
+    std::string line;
+    std::vector<std::string> myLines;
 
     po::options_description cmdline_options;
-    cmdline_options.add(generic).add(langcfg);
+    cmdline_options.add(generic);
 
     try {
         // parse command line arguments.
@@ -75,25 +68,7 @@ int main(int ac, char **av) {
             return 1;
         }
 
-       // override switches.  These switches will override
-       // the --language switch:
-
-       if (vm.count(CPREFIX)) {
-           string tmp = vm[CPREFIX].as< string >();
-           gComment.setMultiLinePrefix(tmp);
-       }
-
-       if (vm.count(CPRE)) {
-           string tmp = vm[CPRE].as< string >();
-           gComment.setLinePrefix(tmp);
-       }
-
-       if (vm.count(CPOSTFIX)) {
-           string tmp = vm[CPOSTFIX].as< string >();
-           gComment.setMultiLinePostfix(tmp);
-       }
-
-       if (vm.count(INPUT)) {
+        if (vm.count(INPUT)) {
            string tmp = vm[INPUT].as< string >();
            ifstream infile;
            infile.open(tmp.c_str(), ofstream::in);
@@ -103,12 +78,28 @@ int main(int ac, char **av) {
                cerr << "Could not open input file " << tmp << endl;
            }
 
-           gComment.format(infile);
+           while (std::getline(infile, line))
+           {
+              myLines.push_back(line);
+           }
        }
        else
        {
            // no template specified, we simply use standard in.
-           gComment.format(cin);
+           while (std::getline(cin, line))
+           {
+              myLines.push_back(line);
+           }
+       }
+
+       if (vm.count(VARNAME))
+       {
+           gVarName = vm[VARNAME].as< string >();
+       }
+       else
+       {
+           cout << "You must specify a variable name.\n\n";
+           return -1;
        }
 
        if (vm.count(OUTPUT)) {
@@ -121,14 +112,14 @@ int main(int ac, char **av) {
                cerr << "Could not open output file " << tmp << endl;
            }
 
-           file << gComment.getResults();
+           file << format_literal_array_cpp(gVarName, myLines, true);
            file.close();
        }
        else
        {
            // if no files specified, we dump to std::cout, and
            // we only do it once.
-           std::cout << gComment.getResults();
+           std::cout << format_literal_array_cpp(gVarName, myLines, true);
        }
     }
     catch(...) {
@@ -137,6 +128,5 @@ int main(int ac, char **av) {
 
 
     return 0;
+    return 0;
 }
-
-
