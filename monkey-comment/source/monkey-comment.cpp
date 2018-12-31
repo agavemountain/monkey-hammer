@@ -59,8 +59,6 @@ int main(int ac, char **av) {
     (CPREFIX, po::value< string >(), "Comment characters to prefix comment stanza.")
     (CPRE, po::value< string >(), "comment characters to prefix each line.")
     (CPOSTFIX, po::value< string >(), "Comment characters to postfix comment stanza.")
-//    (LANGUAGE, po::value< string >(), "sets language options")
-//    (SHOW_LANG, "display supported computer languages")
     ;
 
     po::options_description cmdline_options;
@@ -78,29 +76,6 @@ int main(int ac, char **av) {
             return 1;
         }
 
-//        if (vm.count(SHOW_LANG))
-//        {
-//            cout << "Supported languages:\n\n";
-//            SupportedLanguage::instance().dump_supported_languages();
-//            return 0;
-//        }
-//
-//        if (vm.count(LANGUAGE))
-//        {
-//            string tmp =  vm[LANGUAGE].as< string >();
-//            boost::to_upper(tmp);
-//            bool valid_language = false;
-//
-//            int id = SupportedLanguage::instance().getLanguageID(tmp);
-//            if (id != -1) {
-//                gComment.setLanguage(id);
-//            }
-//            else {
-//                cerr << "Error: undefined language.\n";
-//                return 2;
-//            }
-//        }
-//
        // override switches.  These switches will override
        // the --language switch:
 
