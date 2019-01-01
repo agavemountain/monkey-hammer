@@ -47,4 +47,7 @@ INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
 LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})
 message( "BOOST: ${Boost_LIBRARY_DIRS}")
 
-
+# Mustache {{}}
+add_subdirectory(external/mstch)
+include_directories(${mstch_INCLUDE_DIR})
+#target_link_libraries(your_project mstch)
