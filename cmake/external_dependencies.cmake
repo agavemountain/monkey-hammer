@@ -40,8 +40,8 @@ ENDIF(CPPUNIT_FOUND)
 #SET (Boost_USE_STATIC_LIBS        ON) # only find static libs
 SET (Boost_USE_MULTITHREADED      ON)
 
-FIND_PACKAGE( Boost 1.66.0 COMPONENTS program_options filesystem system thread REQUIRED )
-#FIND_PACKAGE (Boost 1.66.0 COMPONENTS chrono timer test_exec_monitor system)
+FIND_PACKAGE( Boost 1.65.0 COMPONENTS program_options filesystem system thread REQUIRED )
+#FIND_PACKAGE (Boost 1.65.0 COMPONENTS chrono timer test_exec_monitor system)
 FIND_PACKAGE (Threads)
 INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
 LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})
